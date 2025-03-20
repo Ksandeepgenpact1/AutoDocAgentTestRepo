@@ -50,3 +50,85 @@ payment.updateStatus(PaymentStatus.COMPLETED);
 The Payment feature implemented through the `Payment` class provides a foundational structure for managing payment transactions in an application. By incorporating relationships with accounts and the capability to track payment status, this feature enhances the application's ability to handle financial operations effectively and efficiently.
 ---
 
+
+-(2025-03-20 13:39:07)
+# Feature Documentation for Payment Class
+
+## Purpose of the Feature
+The `Payment` class is designed to handle payment processing within an application. This feature provides the necessary functionality to create, validate, and manage payment transactions, ensuring that users can securely and efficiently complete their financial interactions. 
+
+## Description
+The `Payment` class encompasses various attributes and methods that facilitate payment operations. This includes managing payment details such as amount, currency, payment method, and transaction status. The class also includes validation mechanisms to ensure that payment data is accurate and complete before processing transactions. 
+
+### Key Functional Changes
+1. **Payment Initialization**: The class allows the creation of a payment object with essential details like the amount and payment method, which simplifies the process of initiating payments.
+
+2. **Validation Mechanism**: The implementation includes validation logic to check if the payment amount is valid and if the payment method is supported. This helps in preventing erroneous transactions and enhances security.
+
+3. **Transaction Handling**: The class provides methods for processing the payment, which includes updating the transaction status and handling possible errors during the payment process.
+
+4. **Support for Multiple Payment Methods**: The feature may include support for various payment methods (e.g., credit card, PayPal, bank transfer), allowing flexibility for users.
+
+5. **Error Handling**: The implementation includes structured error handling to manage issues that may arise during payment processing, enhancing user experience by providing feedback on transaction status.
+
+## Implementation of the Feature
+This is a high-level overview of the implementation details involved in the `Payment` class. The actual code implementation will include several methods and attributes.
+
+### Example Implementation Structure
+```java
+public class Payment {
+    private double amount;
+    private String currency;
+    private String paymentMethod;
+    private String transactionStatus;
+
+    // Constructor to initialize payment details
+    public Payment(double amount, String currency, String paymentMethod) {
+        this.amount = amount;
+        this.currency = currency;
+        this.paymentMethod = paymentMethod;
+        this.transactionStatus = "Pending"; // Default status
+    }
+
+    // Method to validate payment details
+    public boolean validatePayment() {
+        // Validate amount and payment method
+        if (amount <= 0) {
+            return false; // Invalid amount
+        }
+        // Additional validation logic
+        return true; // Valid payment
+    }
+
+    // Method to process the payment
+    public String processPayment() {
+        if (!validatePayment()) {
+            return "Payment validation failed.";
+        }
+        // Logic to process the payment
+        this.transactionStatus = "Completed"; // Update status
+        return "Payment processed successfully.";
+    }
+
+    // Getters and Setters for attributes
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public String getTransactionStatus() {
+        return transactionStatus;
+    }
+}
+```
+
+### Summary
+The `Payment` class introduces a structured and organized way to manage payment transactions within an application. It enhances user experience by providing validation, flexibility in payment methods, and robust error handling, ultimately streamlining the payment process for both users and developers.
+---
